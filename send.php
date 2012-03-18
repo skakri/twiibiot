@@ -33,7 +33,7 @@ while (1) { // Main loop
 	$tweet = getUnrepliedTweets(7200); // 3hs
 	if ($tweet) {
 		echo "Replying to " . $tweet["author"] . "\n";
-		echo "Offending text was: " . $tweet["text"] . "\n";
+		echo "Relevant text was: " . $tweet["text"] . "\n";
 		$status = $twitter->send('@' . $tweet["author"] . ' ' . $responses[array_rand($responses, 1)], $tweet["tweet_id"]);
 		if ($status) {
 			echo "Tweet has been tweeted\n";
