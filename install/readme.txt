@@ -12,6 +12,7 @@ Version    0.3
 INSTALLATION:
 
 * import install/mysql_db.sql
+* copy conf/config.inc.php.sample to conf/config.inc.php
 * modify conf/config.inc.php to suit your needs (at least database information)
 * populate your database `phrases` table with prases you want to monitor
 * edit send.php and populate $responses array with your predefined responses ('response one', 'response two', ..)
