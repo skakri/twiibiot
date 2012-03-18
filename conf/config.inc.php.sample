@@ -1,0 +1,38 @@
+<?php
+
+// Twitter API
+define('CONSUMER_KEY', 'fill_this');
+define('CONSUMER_SECRET', 'fill_this');
+
+// Twitter user credentials
+define('ACCESS_TOKEN', 'fill_this');
+define('ACCESS_SECRET', 'fill_this');
+
+// database server
+define('DB_SERVER', 'fill_this'); // i.e localhost
+
+// database login name
+define('DB_USER', 'fill_this');
+
+// database login password
+define('DB_PASS', 'fill_this');
+
+// database name
+define('DB_DATABASE', 'fill_this');
+
+// database tables
+define('TABLE_PHRASES', 'phrases');
+define('TABLE_TWEETS', 'tweets');
+
+// timing
+define('SEARCH_MIN_INTERVAL', '1'); // seconds to wait between searches
+define('SEARCH_MAX_INTERVAL', '8'); // max limit, so we dont hit Twitter API rate limit (per IP)
+define('SEARCH_GAP', '180'); // gap, before we can reply to these tweets, AND sleep time between search sessions
+
+// fill_this?
+define('SEARCH_LATLONG', '56.818921,24.202881'); // geo-based search
+define('SEARCH_DISTANCE', '65'); // kilometers
+
+define('REPLY_MIN_INTERVAL', '120'); // seconds to wait beetween tweets
+define('REPLY_MAX_INTERVAL', '240'); // max limit, so we dont hit Twitter API rate limit (per application/user (?))
+define('REPLY_SLEEP', '120'); // sleep if no tweets found
