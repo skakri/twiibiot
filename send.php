@@ -27,7 +27,6 @@ function str_tpl($string, $regex = '/\{([^\{^\}]+)\}/'){
         }
 }
 
-
 function getUnrepliedTweets($interval=7200){
 	$db = Database::obtain();
         $sql="SELECT `id`,`tweet_id`,`author`,`text` FROM `".TABLE_TWEETS."` WHERE `replied` = '0' AND `posted` > now() - interval " . $interval . " second ORDER BY `posted` DESC";
@@ -47,11 +46,15 @@ while (1) { // Main loop
 	if ($tweet) {
 		echo "Replying to " . $tweet["author"] . "\n";
 		echo "Relevant text was: " . $tweet["text"] . "\n";
-		$status = $twitter->send('@' . $tweet["author"] . ' ' . str_tpl($responses[array_rand($responses, 1)]), $tweet["tweet_id"]);
-		if ($status) {
-			echo "Tweet has been tweeted\n";
-		} else {
-			echo "Tweet failed...\n";
+		try {
+			$status = $twitter->send('@' . $tweet["author"] . ' ' . str_tpl($responses[array_rand($responses, 1)]), $tweet["tweet_id"]);
+			if ($status) {
+				echo "Tweet has been tweeted\n";
+			} else {
+				echo "Tweet failed...\n";
+			}
+		} catch (Exception $e) {
+			echo "Twitter exception: $e\n";
 		}
 		echo "\n";
 
